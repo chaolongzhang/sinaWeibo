@@ -63,15 +63,9 @@ def wblogin(username, password):
     )
 
     login_url = re.search('replace\\(\'([^\']+)\'\\)', resp.text).group(1) 
-    print resp.text
-    print
-    print login_url
 
     resp = session.get(login_url)
     login_str = login_str = re.search('\((\{.*\})\)', resp.text).group(1)
-    print resp.text
-    print
-    print login_str
 
     login_info = json.loads(login_str)
     log("登录成功：" + str(login_info))
