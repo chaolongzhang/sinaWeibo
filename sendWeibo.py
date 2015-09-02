@@ -7,7 +7,7 @@ from threading import Timer
 import TextFactory
 
 from config import TIME_SLOG, TIMER_REPEAT
-from loger import log
+from logger import log
 
 
 class WeiboTask(object):
