@@ -2,6 +2,7 @@
 
 用Python模拟HTTP操作，实现微博登陆、定时从秒拍、cnBeta、博客园、TechWeb、推酷获取最新的内容，再转发到微博。
 
+**注: 已兼容Python2和3。**
 
 ##使用
 
@@ -10,16 +11,19 @@
 3.  运行`main.py`，`python main.py`。
 
 注意：
-1. 该代码使用了代码依赖[requests][7]和[rsa][8]，没有安装的话需要先安装：
+1. 该代码使用了代码依赖[requests](http://docs.python-requests.org/en/master/)、[rsa](https://pypi.python.org/pypi/rsa)和[beautifulsoup4](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)，没有安装的话需要先安装：
 
 ```
 pip install rsa
 pip install requests
+pip install beautifulsoup4
 ```
 
-2. 如果你的微博登录时要输入验证码，该代码是登录不成功的，可以在账号安全的登录保护中设置不输入验证码。
+2. 如果你的微博登录时要输入验证码，该代码是登录不成功的。
 
 更多内容请参考：[Python代码登录新浪微博并自动发微博](http://zh.5long.me/2015/code-login-sina-weibo-update-weibo/ )
+
+解决验证码登录问题、更多功能请联系[开发者](http://blog.5long.me/)。
 
 ## License
 

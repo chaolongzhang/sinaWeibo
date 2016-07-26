@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 
-import http
+import zHTTP
 
 class Spider(object):
       def __init__(self, homeUrl, parser):
@@ -9,9 +9,8 @@ class Spider(object):
             self.parser = parser
 
       def getAMessage(self):
-            html = http.get(self.homeUrl)
-            self.parser.feed(html)
-            return self.parser.getMsg()
+            html = zHTTP.get(self.homeUrl)
+            return self.parser.getMsg(html)
 
 
 

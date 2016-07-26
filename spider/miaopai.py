@@ -7,10 +7,8 @@ HOME_URL = "http://www.miaopai.com/miaopai/index_api?cateid=2002&per=20&page=1"
 
 
 class MiaopaParser(object):
-      def __init__(self):
-            self.items = []
-
-      def feed(self, jsonStr):
+      def getItems(self, jsonStr):
+            items = []
             nodes = json.loads(jsonStr, "utf-8")
             results = nodes["result"]
             for node in results:
@@ -18,29 +16,28 @@ class MiaopaParser(object):
                   url = "http://www.miaopai.com/show/%s.htm" % scid
                   msg = node["channel"]["ext"]["_t"]
                   item = "%s %s" % (msg, url)
-                  self.items.append(item)
+                  items.append(item)
+            return items
 
-
-      def getMsg(self):
-            count = len(self.items)
+      def getMsg(self, html):
+            items = self.getItems(html)
+            count = len(items)
             if count == 0:
                   return
             index = random.randint(0, count - 1)
-            print index
-            return self.items[index]
+            return items[index]
 
 
 
 if __name__ == '__main__':
 
-      import http
+      import zHTTP
 
       def getMessage():
-            html = http.get(HOME_URL)
+            html = zHTTP.get(HOME_URL)
             listname = MiaopaParser()
-            listname.feed(html)
-            return listname.getMsg()
+            return listname.getMsg(html)
 
-      for i in range(30):
+      for i in range(3):
             text = getMessage()
             print (text)

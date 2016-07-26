@@ -3,9 +3,7 @@
 import time
 from threading import Timer
 
-
 import TextFactory
-
 from config import TIME_SLOG, TIMER_REPEAT
 from logger import log
 
