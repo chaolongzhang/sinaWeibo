@@ -23,7 +23,7 @@ pip install beautifulsoup4
 
 更多内容请参考：[Python代码登录新浪微博并自动发微博](http://blog.5long.me/2015/code-login-sina-weibo-update-weibo/ )
 
-解决验证码登录问题、更多功能请联系[开发者](http://blog.5long.me/)。
+解决验证码登录问题、更多功能(sinaWeiboPro)请联系[开发者](http://blog.5long.me/)。
 
 ## License
 
