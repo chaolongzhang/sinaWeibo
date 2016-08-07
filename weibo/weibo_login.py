@@ -74,7 +74,7 @@ def wblogin():
     login_str = login_str = re.search('\((\{.*\})\)', resp.text).group(1)
 
     login_info = json.loads(login_str)
-    loger(u"登录成功：" + str(login_info))
+    logger.info(u"登录成功：" + str(login_info))
 
     uniqueid = login_info["userinfo"]["uniqueid"]
     return (session, uniqueid)
