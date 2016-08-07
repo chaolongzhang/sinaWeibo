@@ -6,13 +6,13 @@ from spider.techweb import TechwebParser
 from spider.tuicool import TuicoolParser
 
 spiders = [ 
-          # CnbetaParser(),
-          # CnblogParser(),
-          # MiaopaParser(),
+          MyBlogParser(),
+          CnbetaParser(),
+          CnblogParser(),
+          MiaopaParser(),
           MyBlogParser(),
           TechwebParser(),
-          MyBlogParser(),
-          # TuicoolParser() 
+          TuicoolParser() 
         ]
 
 currentIndex = 0
