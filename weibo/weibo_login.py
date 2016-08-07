@@ -7,12 +7,16 @@ import binascii
 import rsa
 import requests
 
+# for test
+import sys
+sys.path.insert( 0, '..' )
+
 from config import WBCLIENT, user_agent
-from logger import log
+from config import USER_NAME, PASSWD
+from logger import logger
 
 session = requests.session()
 session.headers['User-Agent'] = user_agent
-
 
 def encrypt_passwd(passwd, pubkey, servertime, nonce):
     key = rsa.PublicKey(int(pubkey, 16), int('10001', 16))
@@ -21,7 +25,9 @@ def encrypt_passwd(passwd, pubkey, servertime, nonce):
     return binascii.b2a_hex(passwd)
 
 
-def wblogin(username, password):
+def wblogin():
+    username = USER_NAME
+    password = PASSWD
     resp = session.get(
         'http://login.sina.com.cn/sso/prelogin.php?'
         'entry=weibo&callback=sinaSSOController.preloginCallBack&'
@@ -68,15 +74,13 @@ def wblogin(username, password):
     login_str = login_str = re.search('\((\{.*\})\)', resp.text).group(1)
 
     login_info = json.loads(login_str)
-    log("登录成功：" + str(login_info))
+    loger(u"登录成功：" + str(login_info))
 
     uniqueid = login_info["userinfo"]["uniqueid"]
     return (session, uniqueid)
 
 
 if __name__ == '__main__':
-    from config import USER_NAME, PASSWD
-
-    (http, uid) = wblogin(USER_NAME, PASSWD)
+    (http, uid) = wblogin()
     text = http.get('http://weibo.com/').text
     print (text)

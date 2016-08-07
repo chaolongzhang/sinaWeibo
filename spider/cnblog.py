@@ -1,32 +1,22 @@
-# -*- coding: utf-8 -*-
-
 import bs4
-from utility import attrs2dic
+
+from spider.spider import Spider
+from weibo.weibo_message import WeiboMessage
 
 HOME_URL = "http://www.cnblogs.com"
 
-class CnblogParser:
-      def getMsg(self, html):
+class CnblogParser(Spider):
+      def __init__(self):
+            super(CnblogParser, self).__init__( HOME_URL )
+
+      def get_weibo_message(self):
+            html = self.download_text()
             soup = bs4.BeautifulSoup( html, "html.parser" )
             items = soup.find_all( attrs={ "class": "post_item_body" } )
+            msg = ''
             if len(items) > 0:
                   topItem = items[0]
                   title = topItem.a.string.strip()
                   url = topItem.a.get( 'href' )
-                  return "%s %s" % ( title, url )
-            return None
-
-
-
-if __name__ == '__main__':
-
-      import zHTTP
-
-      def getMessage():
-            html = zHTTP.get(HOME_URL)
-            listname = CnblogParser()
-            return listname.getMsg(html)
-
-      for i in range(3):
-            text = getMessage()
-            print (text)
+                  msg = "%s %s" % ( title, url )
+            return WeiboMessage( msg )

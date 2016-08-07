@@ -7,14 +7,18 @@ user_agent = (
       'Chrome/20.0.1132.57 Safari/536.11'
 )
 
-#微博账号
+# 微博账号和密码
 USER_NAME = "xxx"
-
-#登录密码
 PASSWD = "xxx"
 
-#发送微博的时间间隔
-TIME_SLOG =  30 * 60
+# 发送微博的时间间隔
+TIME_SLOG =  10 * 60
 
-#TIME_SLOG = 10
-TIMER_REPEAT = True
+
+# 上传图片
+max_images = 0
+
+# 图片水印，可以根据需要修改
+add_watermark = False
+watermark_nike = "@微博"
+watermark_url = "weibo.com"
