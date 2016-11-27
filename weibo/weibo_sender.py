@@ -64,7 +64,7 @@ class WeiboSender(object):
         # self.http.headers["Content-Type"] = "application/octet-stream"
         image_name = image_url
         try:
-            f = self.http.get( image_name, timeout=30 )
+            f = self.session.get( image_name, timeout=30 )
             img = f.content
             resp = self.session.post( url, data=img )
             upload_json = re.search( '{.*}}', resp.text ).group(0)
