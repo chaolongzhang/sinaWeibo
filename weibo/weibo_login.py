@@ -9,7 +9,7 @@ import requests
 
 # for test
 import sys
-sys.path.insert( 0, '..' )
+sys.path.insert(0, '..')
 
 from config import WBCLIENT, user_agent
 from config import USER_NAME, PASSWD
@@ -17,6 +17,7 @@ from logger import logger
 
 session = requests.session()
 session.headers['User-Agent'] = user_agent
+
 
 def encrypt_passwd(passwd, pubkey, servertime, nonce):
     key = rsa.PublicKey(int(pubkey, 16), int('10001', 16))
@@ -55,7 +56,7 @@ def wblogin():
         'pwencode': 'rsa2',
         'sp': encrypt_passwd(password, pre_login['pubkey'],
                              pre_login['servertime'], pre_login['nonce']),
-        'rsakv' : pre_login['rsakv'],
+        'rsakv': pre_login['rsakv'],
         'encoding': 'UTF-8',
         'prelt': '53',
         'url': 'http://weibo.com/ajaxlogin.php?framelogin=1&callback=parent.si'
@@ -68,13 +69,13 @@ def wblogin():
         data=data
     )
 
-    login_url = re.search('replace\\(\'([^\']+)\'\\)', resp.text).group(1) 
+    login_url = re.search('replace\\(\'([^\']+)\'\\)', resp.text).group(1)
 
     resp = session.get(login_url)
     login_str = login_str = re.search('\((\{.*\})\)', resp.text).group(1)
 
     login_info = json.loads(login_str)
-    logger.info(u"登录成功：" + str(login_info))
+    logger.info("login success：[%s]" % str(login_info))
 
     uniqueid = login_info["userinfo"]["uniqueid"]
     return (session, uniqueid)
@@ -83,4 +84,4 @@ def wblogin():
 if __name__ == '__main__':
     (http, uid) = wblogin()
     text = http.get('http://weibo.com/').text
-    print (text)
+    print(text)

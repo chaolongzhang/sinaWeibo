@@ -17,8 +17,13 @@ pip install rsa
 pip install requests
 pip install beautifulsoup4
 ```
+或者
 
-2. 如果你的微博登录时要输入验证码，该代码是登录不成功的。
+```
+pip install -r requirements.txt
+```
+
+2. 如果你的微博登录时需要输入验证码，该代码是登录不成功的，在使用该代码前请取消微博的登陆验证码。
 
 更多内容请参考：[Python代码登录新浪微博并自动发微博](http://blog.5long.me/2015/code-login-sina-weibo-update-weibo/ )
 

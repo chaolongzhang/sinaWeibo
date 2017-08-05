@@ -8,14 +8,14 @@ user_agent = (
 )
 
 # 微博账号和密码
-USER_NAME = "xxx"
-PASSWD = "xxx"
+USER_NAME = "XXX"
+PASSWD = "XXX"
 
 # 发送微博的时间间隔
-TIME_SLOG =  10 * 60
+TIME_SLOG = 10 * 60
 
 
-# 上传图片
+# 允许上传图片的最大数量。如果设置为0，则不上传图片。
 max_images = 0
 
 # 图片水印，可以根据需要修改
