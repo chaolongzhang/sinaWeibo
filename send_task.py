@@ -19,7 +19,7 @@ class SendTask(Thread):
         self.sendWeibo()
         while not self.stopped.wait(TIME_SLOG):
             self.sendWeibo()
-            logger.info("end task...")
+        logger.info("end task...")
 
     def stop(self):
             self.stopped.set()
