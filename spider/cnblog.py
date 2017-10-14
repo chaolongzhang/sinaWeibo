@@ -1,5 +1,7 @@
-import bs4
+# -*- coding: utf-8 -*-
 
+from __future__ import absolute_import
+import bs4
 from spider.spider import Spider
 from weibo.weibo_message import WeiboMessage
 

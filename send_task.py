@@ -1,7 +1,7 @@
+# -*- coding: utf-8 -*-
+
 from threading import Thread, Event
-
 import spider_factory
-
 from config import TIME_SLOG
 from weibo.weibo_sender import WeiboSender
 from logger import logger
@@ -22,7 +22,7 @@ class SendTask(Thread):
         logger.info("end task...")
 
     def stop(self):
-            self.stopped.set()
+        self.stopped.set()
 
     def sendWeibo(self):
         spider = spider_factory.nextSpider()

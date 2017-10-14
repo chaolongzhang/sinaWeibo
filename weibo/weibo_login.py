@@ -6,11 +6,6 @@ import base64
 import binascii
 import rsa
 import requests
-
-# for test
-import sys
-sys.path.insert(0, '..')
-
 from config import WBCLIENT, user_agent
 from config import USER_NAME, PASSWD
 from logger import logger

@@ -2,7 +2,7 @@
 
 用Python模拟HTTP操作，实现微博登陆、定时从秒拍、cnBeta、博客园、TechWeb、推酷获取最新的内容，再转发到微博。
 
-**注: 已兼容Python2和3。**
+**注: 已兼容Python2和3。建议使用Python3，Python2下可能出现字符编码问题。**
 
 ## 使用
 

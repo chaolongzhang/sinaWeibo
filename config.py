@@ -12,7 +12,7 @@ USER_NAME = "XXX"
 PASSWD = "XXX"
 
 # 发送微博的时间间隔
-TIME_SLOG = 10 * 60
+TIME_SLOG = 30 * 60
 
 
 # 允许上传图片的最大数量。如果设置为0，则不上传图片。

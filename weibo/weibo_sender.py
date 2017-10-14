@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import time
 import re
 import json
@@ -24,6 +26,7 @@ class WeiboSender(object):
             raise ValueError('weibo must WeiboMessage class type')
             logger.debug('weibo must WeiboMessage class type')
         if weibo.is_empty:
+            logger.info('没有获得信息，不发送')
             return
 
         pids = ''

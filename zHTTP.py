@@ -1,5 +1,4 @@
 import requests
-
 from config import user_agent
 
 

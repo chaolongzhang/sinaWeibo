@@ -1,6 +1,8 @@
+# -*- coding: utf-8 -*-
+
+from __future__ import absolute_import
 import json
 import random
-
 from spider.spider import Spider
 from weibo.weibo_message import WeiboMessage
 

@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 import send_task
-
 from weibo.weibo_login import wblogin
 
 if __name__ == '__main__':

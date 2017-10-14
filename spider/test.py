@@ -14,11 +14,11 @@ from tuicool import TuicoolParser
 if __name__ == '__main__':
     types = [
         CnbetaParser,
-        # CnblogParser,
-        # MiaopaParser,
-        # MyBlogParser,
-        # TechwebParser,
-        # TuicoolParser
+        CnblogParser,
+        MiaopaParser,
+        MyBlogParser,
+        TechwebParser,
+        TuicoolParser
     ]
     for c in types:
         print(os.linesep + '************* ' + str(c) + ' start *************')
