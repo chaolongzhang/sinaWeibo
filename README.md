@@ -47,8 +47,8 @@ sinaWeibo is published under GNU GPLv3 License. See the LICENSE file for more.
 
 **支付宝扫码捐赠**
 
-![](./doc/donate-alipay.jpg)
+![](./doc/donate-alipay.JPG)
 
 **微信扫码捐赠**
 
-![](./doc/donate-wechatpay.jpg)
+![](./doc/donate-wechatpay.JPG)
