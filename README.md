@@ -40,3 +40,15 @@ pip install -r requirements.txt
 ## License
 
 sinaWeibo is published under GNU GPLv3 License. See the LICENSE file for more.
+
+## 捐赠
+
+如果您觉得该工具对你有帮助，欢迎给我一定的捐赠。
+
+**支付宝扫码捐赠**
+
+![](doc/donate-alipay.jpg)
+
+**微信扫码捐赠**
+
+![](doc/donate-wechatpay.jpg)
