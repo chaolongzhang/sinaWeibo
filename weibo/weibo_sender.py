@@ -4,13 +4,13 @@ import time
 import re
 import json
 from weibo.weibo_message import WeiboMessage
-from config import add_watermark, watermark_url, watermark_nike
-from config import max_images
+from config import ADD_WATERMARK, WATERMARK_URL, WATERMARK_NIKE
+from config import MAX_IMAGES
 from logger import logger
 
 
-if max_images < 0 or max_images > 9:
-    max_images = 9
+if MAX_IMAGES < 0 or MAX_IMAGES > 9:
+    MAX_IMAGES = 9
 
 
 class WeiboSender(object):
@@ -35,11 +35,9 @@ class WeiboSender(object):
         data = weibo.get_send_data(pids)
         self.session.headers["Referer"] = self.Referer
         try:
-            self.session.post(
-                "http://www.weibo.com/aj/mblog/add?ajwvr=6&__rnd=%d" % int(
-                    time.time() * 1000),
-                data=data
-            )
+            self.session.post("https://www.weibo.com/aj/mblog/add?ajwvr=6&__rnd=%d"
+                              % int(time.time() * 1000),
+                              data=data)
             logger.info('微博[%s]发送成功' % str(weibo))
         except Exception as e:
             logger.debug(e)
@@ -47,8 +45,8 @@ class WeiboSender(object):
 
     def upload_images(self, images):
         pids = ""
-        if len(images) > max_images:
-            images = images[0: max_images]
+        if len(images) > MAX_IMAGES:
+            images = images[0: MAX_IMAGES]
         for image in images:
             pid = self.upload_image_stream(image)
             if pid:
@@ -57,11 +55,11 @@ class WeiboSender(object):
         return pids.strip()
 
     def upload_image_stream(self, image_url):
-        if add_watermark:
+        if ADD_WATERMARK:
             url = "http://picupload.service.weibo.com/interface/pic_upload.php?\
             app=miniblog&data=1&url=" \
-                + watermark_url + "&markpos=1&logo=1&nick=" \
-                + watermark_nike + \
+                + WATERMARK_URL + "&markpos=1&logo=1&nick=" \
+                + WATERMARK_NIKE + \
                 "&marks=1&mime=image/jpeg&ct=0.5079312645830214"
 
         else:

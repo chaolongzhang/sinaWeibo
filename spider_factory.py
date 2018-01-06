@@ -18,7 +18,6 @@ spiders = [
 currentIndex = 0
 count = len(spiders)
 
-
 def nextSpider():
     global currentIndex
     spider = spiders[currentIndex]

@@ -3,7 +3,6 @@
 from __future__ import absolute_import
 import bs4
 import random
-import zHTTP
 from spider.spider import Spider
 from weibo.weibo_message import WeiboMessage
 
@@ -22,7 +21,8 @@ class MyBlogParser(Spider):
             url = '%s/archives' % (HOME_URL)
         else:
             url = '%s/archives/page/%d/' % (HOME_URL, page_index)
-        html = zHTTP.get(url)
+        self.home_url = url
+        html = super().download_text()
         return html
 
     def get_weibo_message(self):

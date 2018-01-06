@@ -2,3 +2,4 @@
 .*
 !.gitignore
 */__pycache__/*
+qr_login.png

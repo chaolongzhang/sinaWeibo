@@ -26,7 +26,7 @@ class MiaopaParser(Spider):
 
     def getItems(self, jsonStr):
         items = []
-        nodes = json.loads(jsonStr, "utf-8")
+        nodes = json.loads(jsonStr)
         results = nodes["result"]
         for node in results:
             scid = node["channel"]["scid"]

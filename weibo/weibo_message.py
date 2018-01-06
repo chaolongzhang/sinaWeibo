@@ -2,7 +2,6 @@
 
 import os
 
-
 class WeiboMessage(object):
     """weibo message struct"""
 

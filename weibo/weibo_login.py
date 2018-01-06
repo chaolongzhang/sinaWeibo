@@ -6,12 +6,12 @@ import base64
 import binascii
 import rsa
 import requests
-from config import WBCLIENT, user_agent
+from config import WBCLIENT, USER_AGENT
 from config import USER_NAME, PASSWD
 from logger import logger
 
 session = requests.session()
-session.headers['User-Agent'] = user_agent
+session.headers['User-Agent'] = USER_AGENT
 
 
 def encrypt_passwd(passwd, pubkey, servertime, nonce):
@@ -32,8 +32,6 @@ def wblogin():
     )
 
     pre_login_str = re.match(r'[^{]+({.+?})', resp.text).group(1)
-    pre_login = json.loads(pre_login_str)
-
     pre_login = json.loads(pre_login_str)
     data = {
         'entry': 'weibo',
@@ -59,19 +57,18 @@ def wblogin():
         'returntype': 'META'
     }
 
-    resp = session.post(
-        'http://login.sina.com.cn/sso/login.php?client=%s' % WBCLIENT,
-        data=data
-    )
+    login_url_list = 'http://login.sina.com.cn/sso/login.php?client=%s' % WBCLIENT
+    resp = session.post(login_url_list, data=data)
+    match_obj = re.search('replace\\(\'([^\']+)\'\\)', resp.text)
+    if match_obj is None:
+        logger.info('登录失败，请检查登录信息')
+        return (session, None)
 
-    login_url = re.search('replace\\(\'([^\']+)\'\\)', resp.text).group(1)
-
+    login_url = match_obj.group(1)
     resp = session.get(login_url)
     login_str = login_str = re.search('\((\{.*\})\)', resp.text).group(1)
-
     login_info = json.loads(login_str)
     logger.info("login success：[%s]" % str(login_info))
-
     uniqueid = login_info["userinfo"]["uniqueid"]
     return (session, uniqueid)
 
